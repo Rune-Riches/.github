@@ -266,7 +266,40 @@ Load tested with k6 against all 5 services running on a single AWS EC2 t3.medium
 | Cross-service data sync | 150 status toggles | 100% consistency |
 | Coin log multi-write | 1,000 operations (x4 writes each) | Zero partial writes |
 
-**Estimated production capacity:** 3,000+ concurrent users with EKS horizontal scaling.
+### Infrastructure Scaling Estimates
+
+Based on load test data where a single t3.medium (2 vCPU, 4 GB) handled 750 concurrent users at 130.7 req/s. All estimates assume sub-500ms P95 latency and less than 1% error rate as the target.
+
+**EKS (Backend Services)**
+
+| Component | 3,000 Concurrent | 7,500 Concurrent | 15,000 Concurrent |
+|---|---|---|---|
+| EKS Worker Nodes | 4-5x t3.xlarge | 8-10x m5.xlarge | 15-20x m5.xlarge |
+| Pods per Service | 2-3 | 4-6 | 8-12 |
+| Total Pods (5 services) | 10-15 | 20-30 | 40-60 |
+| MongoDB Atlas | M40 (4 vCPU, 16 GB) | M50 (8 vCPU, 32 GB) | M60 (16 vCPU, 64 GB) |
+| MSK (Kafka) Brokers | 2x kafka.m5.large | 3x kafka.m5.large | 3-5x kafka.m5.xlarge |
+| ElastiCache (Redis) | 1x cache.r6g.large | 2x cache.r6g.large (replica) | cache.r6g.xlarge (cluster) |
+| ALB | 1 (auto-scales) | 1 (auto-scales) | 1-2 (auto-scales) |
+| NAT Gateways | 2 (multi-AZ) | 2 (multi-AZ) | 3 (multi-AZ) |
+
+**CloudFront (Static Assets - Player App & Admin Panel)**
+
+| Component | 3,000 Concurrent | 7,500 Concurrent | 15,000 Concurrent |
+|---|---|---|---|
+| Distribution | 1 per app (2 total) | 1 per app (2 total) | 1 per app (2 total) |
+| Price Class | 100 (US & Europe) | 200 (US, Europe, Asia) | All Edge Locations |
+| Origin | S3 bucket | S3 bucket | S3 bucket |
+| Cache Policy | 24h TTL, gzip/brotli | 24h TTL, gzip/brotli | 24h TTL, gzip/brotli |
+| WAF | AWS WAF Basic | AWS WAF with rate rules | AWS WAF with bot control |
+| Estimated Transfer | ~50 GB/day | ~125 GB/day | ~250 GB/day |
+
+**Notes:**
+- CloudFront handles all static asset delivery (JS bundles, CSS, images) - cost scales linearly with traffic and is the same regardless of backend infra
+- Redis is required at 3,000+ for Socket.IO adapter (sticky sessions across pods) and rate limiter state
+- The primary bottleneck at scale is the external Hub88 game provider API, not internal services
+- MongoDB connection pooling should be tuned to ~10 connections per pod at higher tiers
+- All estimates assume a single AWS region (us-east-1) deployment
 
 ---
 
