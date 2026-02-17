@@ -1,6 +1,6 @@
 # Rune Riches
 
-Rune Riches is a **social sweepstakes casino platform** built for the US market. Players purchase virtual Gold Coin packages and receive free Sweepstakes Coins as a promotional bonus. They use these coins to play a full catalog of casino-style games — slots, table games, and more. Sweepstakes Coins can be redeemed for real cash prizes, operating under the sweepstakes legal model that makes the platform legal in most US states.
+Rune Riches is a **social sweepstakes casino platform** built for the US market. Players purchase virtual Gold Coin packages and receive free Sweepstakes Coins as a promotional bonus. They use these coins to play a full catalog of casino-style games - slots, table games, and more. Sweepstakes Coins can be redeemed for real cash prizes, operating under the sweepstakes legal model that makes the platform legal in most US states.
 
 ---
 
@@ -13,15 +13,15 @@ The platform runs on a **dual-currency model**:
 | **Gold Coins** | GC / GLD | Purchased in the Shop | Play-for-fun currency used in all games |
 | **Sweepstakes Coins** | SC / SS1 | Received free with every GC purchase, or via mail-in AMOE | Can be redeemed for real cash prizes after wagering requirements are met |
 
-Players never directly buy Sweepstakes Coins — they receive them as a free promotional bonus alongside Gold Coin purchases. This is what makes Rune Riches a legal sweepstakes platform rather than a traditional gambling site. Players can also acquire free Sweepstakes Coins through the **AMOE** (Alternative Method of Entry) program without making any purchase.
+Players never directly buy Sweepstakes Coins - they receive them as a free promotional bonus alongside Gold Coin purchases. This is what makes Rune Riches a legal sweepstakes platform rather than a traditional gambling site. Players can also acquire free Sweepstakes Coins through the **AMOE** (Alternative Method of Entry) program without making any purchase.
 
 ---
 
 ## Who Uses the Platform
 
-**Players** — members of the public who register, verify their identity, play games, and redeem winnings through the player-facing casino web app.
+**Players** - members of the public who register, verify their identity, play games, and redeem winnings through the player-facing casino web app.
 
-**Administrators** — the operations, compliance, and support team who manage the platform through a dedicated internal back-office panel. Roles include admins, sub-admins, customer service agents, cashiers, and moderators — each with different levels of access.
+**Administrators** - the operations, compliance, and support team who manage the platform through a dedicated internal back-office panel. Roles include admins, sub-admins, customer service agents, cashiers, and moderators - each with different levels of access.
 
 ---
 
@@ -29,34 +29,34 @@ Players never directly buy Sweepstakes Coins — they receive them as a free pro
 
 ### What Players Can Do
 
-- **Register & Sign In** — email/password, Google, or Facebook social login
-- **Browse & Play Games** — full casino game catalog from multiple providers, launched within the platform
-- **Buy Gold Coin Packages** — the Shop offers regular packages, first-purchase specials, and promotional deals
-- **Track Balances** — real-time Gold Coin and Sweepstakes Coin balances that update instantly
-- **Redeem Winnings** — cash out Sweepstakes Coins for real prizes (subject to identity verification)
-- **Complete KYC** — identity verification via Veriff to unlock redemptions
-- **VIP & Loyalty Program** — tier-based progression with rewards and perks at each level
-- **Leaderboards** — compete with other players in timed competitions for prizes
-- **Promotions** — access platform promotions, bonuses, and special offers
-- **Referral Program** — invite friends and earn rewards when they join and play
-- **Live Chat** — real-time chat with other players and customer support
-- **Responsible Gaming** — self-exclusion and cooldown tools available directly in the app
+- **Register & Sign In** - email/password, Google, or Facebook social login
+- **Browse & Play Games** - full casino game catalog from multiple providers, launched within the platform
+- **Buy Gold Coin Packages** - the Shop offers regular packages, first-purchase specials, and promotional deals
+- **Track Balances** - real-time Gold Coin and Sweepstakes Coin balances that update instantly
+- **Redeem Winnings** - cash out Sweepstakes Coins for real prizes (subject to identity verification)
+- **Complete KYC** - identity verification via Veriff to unlock redemptions
+- **VIP & Loyalty Program** - tier-based progression with rewards and perks at each level
+- **Leaderboards** - compete with other players in timed competitions for prizes
+- **Promotions** - access platform promotions, bonuses, and special offers
+- **Referral Program** - invite friends and earn rewards when they join and play
+- **Live Chat** - real-time chat with other players and customer support
+- **Responsible Gaming** - self-exclusion and cooldown tools available directly in the app
 
 ### What Administrators Can Do
 
-- **Player Management** — search, view, and manage player accounts, balances, KYC status, and transaction history
-- **Game & Provider Management** — enable/disable games and providers, manage the catalog
-- **Shop & Packages** — configure purchase packages, pricing, discounts, and special offers
-- **Rewards & Bonuses** — create reward definitions with coin amounts, wagering requirements, and restrictions
-- **Promotions & Leaderboards** — run marketing campaigns and competitive events
-- **Loyalty Program** — configure VIP tiers, benefits, and progression rules
-- **Redemption Approvals** — review and approve/reject player cash-out requests
-- **Automation Rules** — build event-driven workflows that trigger on player actions (registration, purchases, game play) and execute sequences of actions automatically
-- **Dynamic Report Builder** — build custom reports selecting from player attributes and financial metrics, with scheduled email delivery
-- **1099 Tax Reporting** — SSN-based tax compliance reporting for large prize winners
-- **Content Management** — edit legal pages, FAQs, support articles, and SEO settings
-- **Audit Logs** — full trail of all sensitive admin operations
-- **AI Assistant (Chariot Ally)** — an AI-powered assistant built into the admin panel that can look up player data, pull financial metrics, build reports, and create automation rules through natural conversation
+- **Player Management** - search, view, and manage player accounts, balances, KYC status, and transaction history
+- **Game & Provider Management** - enable/disable games and providers, manage the catalog
+- **Shop & Packages** - configure purchase packages, pricing, discounts, and special offers
+- **Rewards & Bonuses** - create reward definitions with coin amounts, wagering requirements, and restrictions
+- **Promotions & Leaderboards** - run marketing campaigns and competitive events
+- **Loyalty Program** - configure VIP tiers, benefits, and progression rules
+- **Redemption Approvals** - review and approve/reject player cash-out requests
+- **Automation Rules** - build event-driven workflows that trigger on player actions (registration, purchases, game play) and execute sequences of actions automatically
+- **Dynamic Report Builder** - build custom reports selecting from player attributes and financial metrics, with scheduled email delivery
+- **1099 Tax Reporting** - SSN-based tax compliance reporting for large prize winners
+- **Content Management** - edit legal pages, FAQs, support articles, and SEO settings
+- **Audit Logs** - full trail of all sensitive admin operations
+- **AI Assistant (Chariot Ally)** - an AI-powered assistant built into the admin panel that can look up player data, pull financial metrics, build reports, and create automation rules through natural conversation
 
 ---
 
@@ -66,8 +66,8 @@ Players never directly buy Sweepstakes Coins — they receive them as a free pro
 
 | Repository | Description |
 |---|---|
-| **frontend-runeriches** | The player-facing casino web app — React, Vite, Tailwind CSS |
-| **admin-backoffice** | The internal administration panel — React, Vite, Bootstrap |
+| **frontend-runeriches** | The player-facing casino web app - React, Vite, Tailwind CSS |
+| **admin-backoffice** | The internal administration panel - React, Vite, Bootstrap |
 
 ### Backend Services
 
@@ -77,14 +77,14 @@ Players never directly buy Sweepstakes Coins — they receive them as a free pro
 | **game-service** | Game catalog, session management, and Hub88 game provider integration (handles all bet/win/rollback transactions) |
 | **wallet-service** | Coin balances, reward definitions, balance adjustments, and transaction ledger |
 | **payment-service** | Purchase and redemption processing via ApcoPay (cards) and NowPayments (crypto) |
-| **admin-service** | Back-office API powering the admin panel — reporting, automation rules, event logs, and the Chariot Ally AI assistant |
+| **admin-service** | Back-office API powering the admin panel - reporting, automation rules, event logs, and the Chariot Ally AI assistant |
 
 ### Infrastructure & Tooling
 
 | Repository | Description |
 |---|---|
-| **brand-deployment** | AWS infrastructure as code (Terraform) — EKS Kubernetes cluster, networking, and CI/CD pipelines |
-| **status-service** | Internal health monitoring dashboard — polls all services and displays a unified status page |
+| **brand-deployment** | AWS infrastructure as code (Terraform) - EKS Kubernetes cluster, networking, and CI/CD pipelines |
+| **status-service** | Internal health monitoring dashboard - polls all services and displays a unified status page |
 | **api-doc-service** | API documentation service |
 | **load-testing** | Performance testing scripts for API endpoints |
 | **security-testing** | Security audit tooling and vulnerability testing |
@@ -150,7 +150,7 @@ Players never directly buy Sweepstakes Coins — they receive them as a free pro
 6. The player's Gold Coin and Sweepstakes Coin balances update in real time via WebSocket
 
 **When a player plays a game:**
-1. Player clicks a game — game-service generates an encrypted launch token
+1. Player clicks a game - game-service generates an encrypted launch token
 2. Hub88 opens the game in the player's browser
 3. For every bet and win, Hub88 sends webhook calls to game-service
 4. Game-service deducts or credits coins via wallet-service
@@ -168,11 +168,11 @@ Players never directly buy Sweepstakes Coins — they receive them as a free pro
 
 | Provider | What It Does |
 |---|---|
-| **Hub88** | Game aggregation — provides the full catalog of casino games and processes all game transactions |
-| **Veriff** | Identity verification (KYC) — players upload ID documents for automated verification |
+| **Hub88** | Game aggregation - provides the full catalog of casino games and processes all game transactions |
+| **Veriff** | Identity verification (KYC) - players upload ID documents for automated verification |
 | **ApcoPay** | Card payment processing for coin package purchases |
 | **NowPayments** | Cryptocurrency payment processing |
-| **SendGrid** | Transactional emails — registration, password reset, reports, notifications |
+| **SendGrid** | Transactional emails - registration, password reset, reports, notifications |
 | **Twilio** | SMS and WhatsApp messaging |
 | **Dilisense** | AML (anti-money laundering) screening |
 | **Zendesk** | Customer support chat widget embedded in the player app |
