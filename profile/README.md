@@ -294,12 +294,32 @@ Based on load test data where a single t3.medium (2 vCPU, 4 GB) handled 750 conc
 | WAF | AWS WAF Basic | AWS WAF with rate rules | AWS WAF with bot control |
 | Estimated Transfer | ~50 GB/day | ~125 GB/day | ~250 GB/day |
 
+**Estimated Monthly Cost (us-east-1, On-Demand)**
+
+| Component | 3,000 Concurrent | 7,500 Concurrent | 15,000 Concurrent |
+|---|---|---|---|
+| EKS Control Plane | $73 | $73 | $73 |
+| EC2 Worker Nodes | $605 (5x t3.xlarge) | $1,260 (9x m5.xlarge) | $2,520 (18x m5.xlarge) |
+| MongoDB Atlas | $540 (M40) | $1,050 (M50) | $2,100 (M60) |
+| MSK (Kafka) | $326 (2 brokers) | $499 (3 brokers) | $1,308 (4 brokers) |
+| ElastiCache (Redis) | $121 (1 node) | $242 (2 nodes) | $726 (3-node cluster) |
+| ALB | $40 | $75 | $120 |
+| NAT Gateways | $116 (2 AZs) | $186 (2 AZs) | $339 (3 AZs) |
+| CloudFront | $128 (~1.5 TB/mo) | $319 (~3.75 TB/mo) | $638 (~7.5 TB/mo) |
+| WAF | $10 | $20 | $60 |
+| S3 + ECR + Route 53 | $15 | $15 | $15 |
+| CloudWatch / Logging | $50 | $100 | $200 |
+| **Total** | **~$2,024/mo** | **~$3,839/mo** | **~$8,099/mo** |
+
+All prices are on-demand list pricing for us-east-1 (N. Virginia) with no reserved instance or savings plan discounts applied.
+
 **Notes:**
-- CloudFront handles all static asset delivery (JS bundles, CSS, images) - cost scales linearly with traffic and is the same regardless of backend infra
+- CloudFront handles all static asset delivery (JS bundles, CSS, images) - cost scales linearly with traffic
 - Redis is required at 3,000+ for Socket.IO adapter (sticky sessions across pods) and rate limiter state
 - The primary bottleneck at scale is the external Hub88 game provider API, not internal services
 - MongoDB connection pooling should be tuned to ~10 connections per pod at higher tiers
 - All estimates assume a single AWS region (us-east-1) deployment
+- Reserved instances or savings plans typically reduce EC2 and ElastiCache costs by 30-40%
 
 ---
 
