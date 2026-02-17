@@ -195,6 +195,81 @@ The platform runs on **AWS** using **Amazon EKS (Kubernetes)**. All backend serv
 
 ---
 
+## Security Testing (OWASP Top 10)
+
+**125 penetration tests** across all 5 microservices, covering the full OWASP Top 10 (2021) categories. Testing was performed over 5 iterative test-fix-retest cycles.
+
+### Vulnerability Trend
+
+| Cycle | Critical | High | Medium | Low | Total |
+|---|---|---|---|---|---|
+| Test 1 (Baseline) | 1 | 7 | 5 | 2 | 15 |
+| Test 2 (Post-Fix) | 0 | 2 | 6 | 2 | 10 |
+| Test 3 (Post-Fix) | 0 | 0 | 5 | 1 | 6 |
+| Test 4 (Internal Services) | 0 | 0 | 5 | 1 | 6 |
+| **Test 5 (Final)** | **0** | **0** | **8** | **1** | **9** |
+
+### Final OWASP Category Status
+
+| Category | Status |
+|---|---|
+| A01 - Broken Access Control | Mitigated |
+| A02 - Cryptographic Failures | Mitigated |
+| A03 - Injection | Mitigated |
+| A04 - Insecure Design | Mitigated |
+| A05 - Security Misconfiguration | Partially Mitigated |
+| A06 - Vulnerable Components | Mitigated |
+| A07 - Authentication Failures | Mitigated |
+| A08 - Integrity Failures | Mitigated |
+| A09 - Logging & Monitoring | Partially Mitigated |
+| A10 - SSRF | Mitigated |
+
+**Overall risk level: LOW** - 0 critical, 0 high. Remaining medium findings are infrastructure-level items (security headers, WAF configuration).
+
+---
+
+## Performance & Load Testing
+
+Load tested with k6 against all 5 services running on a single AWS EC2 t3.medium instance (2 vCPU, 3.7 GB RAM).
+
+### Normal Load - 150 Concurrent Users, 10 Minutes
+
+| Metric | Result |
+|---|---|
+| Total Requests | 24,923 |
+| Throughput | 39.6 req/s |
+| Error Rate | 0% |
+| P95 Latency | 440ms |
+| Login Success | 100% |
+| Game Launch Success | 100% |
+| Check Success Rate | 100% |
+
+### Stress Test - 750 Concurrent Users, 12 Minutes
+
+| Metric | Result |
+|---|---|
+| Total Requests | 99,446 |
+| Throughput | 130.7 req/s |
+| Error Rate | 4.56% |
+| P95 Latency | 3,740ms |
+| Login Success | 100% |
+| Wallet Update Success | 100% |
+| Check Success Rate | 99.32% |
+
+### Data Integrity Under Load
+
+| Test | Concurrent Operations | Result |
+|---|---|---|
+| Wallet balance atomicity | 2,500 concurrent increments | Zero lost updates |
+| Payment idempotency | 500 submissions (10 unique) | 490 duplicates correctly rejected |
+| Optimistic locking | 250 concurrent updates | 1 winner, 249 correctly rejected |
+| Cross-service data sync | 150 status toggles | 100% consistency |
+| Coin log multi-write | 1,000 operations (x4 writes each) | Zero partial writes |
+
+**Estimated production capacity:** 3,000+ concurrent users with EKS horizontal scaling.
+
+---
+
 ## Tech Stack
 
 | Layer | Technologies |
