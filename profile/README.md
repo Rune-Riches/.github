@@ -46,9 +46,9 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 
 - **Player Management** - search, view, and manage player accounts, balances, KYC status, and transaction history
 - **Game & Provider Management** - enable/disable games and providers, manage the catalog
-- **Shop & Packages** - configure purchase packages, pricing, discounts, and special offers
+- **Shop & Packages** - configure purchase packages, pricing, discounts, and special offers, with AI-powered image generation for package artwork
 - **Rewards & Bonuses** - create reward definitions with coin amounts, wagering requirements, and restrictions
-- **Promotions & Leaderboards** - run marketing campaigns and competitive events
+- **Promotions & Leaderboards** - run marketing campaigns and competitive events, with AI-generated promotional artwork
 - **Loyalty Program** - configure VIP tiers, benefits, and progression rules
 - **Redemption Approvals** - review and approve/reject player cash-out requests
 - **Automation Rules** - build event-driven workflows that trigger on player actions (registration, purchases, game play) and execute sequences of actions automatically
@@ -178,6 +178,7 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 | **Zendesk** | Customer support chat widget embedded in the player app |
 | **Google / Facebook** | Social login for player registration |
 | **Anthropic (Claude)** | Powers the Chariot Ally AI assistant in the admin back-office |
+| **Ideogram** | AI image generation for shop package artwork and promotional banner art |
 | **AWS S3** | Image and asset storage (game thumbnails, avatars, provider logos) |
 | **AWS MSK (Kafka)** | Event streaming across services for real-time data flow |
 
@@ -381,4 +382,4 @@ Amazon EKS (Elastic Kubernetes Service) runs all five backend microservices as c
 | **Analytics** | PostHog (product analytics, session replays, feature flags) |
 | **Monitoring** | Sentry (error tracking, performance monitoring, release health) |
 | **Infrastructure** | AWS EKS, CloudFront, ECR, S3, MSK, ALB, Terraform |
-| **AI** | Anthropic Claude API (admin assistant) |
+| **AI** | Anthropic Claude API (admin assistant), Ideogram API (image generation) |
