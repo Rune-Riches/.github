@@ -323,6 +323,53 @@ All prices are on-demand list pricing for us-east-1 (N. Virginia) with no reserv
 
 ---
 
+## Platform Operations
+
+### Player Behaviour Tracking - PostHog
+
+PostHog is an open-source product analytics platform used to understand how players interact with the casino. It captures every click, page view, and action players take - giving the team a clear picture of what's working and what isn't.
+
+- **Session Replays** - watch real player sessions to see exactly how they navigate the site, where they get stuck, and what makes them leave
+- **Funnels** - track conversion at every step (registration to first purchase, game browse to game play, etc.) and identify where players drop off
+- **Feature Flags** - roll out new features to a small percentage of players first, measure the impact, then expand or roll back without deploying new code
+- **Retention Analysis** - understand which players come back, how often, and what keeps them engaged
+- **Cohort Segmentation** - group players by behaviour (e.g. "players who purchased in their first week" vs "players who only use free coins") and compare outcomes
+- **Self-Hosted Option** - PostHog can be self-hosted, meaning player data stays within our own infrastructure rather than being sent to a third party - important for a platform handling financial transactions
+
+### Error Tracking - Sentry
+
+Sentry monitors both the player casino app and the admin panel in real time, catching errors the moment they happen - before players report them.
+
+- **Automatic Error Capture** - every JavaScript error, failed API call, or unhandled exception is captured with full context (browser, device, user actions leading up to the error)
+- **Release Tracking** - errors are tied to specific code releases, making it easy to see if a new deployment introduced problems and which commit caused it
+- **Performance Monitoring** - tracks page load times, slow API calls, and rendering bottlenecks across all user devices
+- **Alerting** - the team gets notified immediately when error rates spike, allowing issues to be fixed before they affect a large number of players
+- **Breadcrumbs** - every error comes with a trail of user actions (clicked button, navigated to page, submitted form) that led to the failure, making debugging faster
+
+### Website Delivery - CloudFront
+
+CloudFront is Amazon's content delivery network (CDN) that serves the player casino app and admin panel to users worldwide. Instead of every request going back to a single server, CloudFront caches the website at edge locations close to where players are.
+
+- **Fast Load Times** - static assets (JavaScript, CSS, images, fonts) are served from the nearest AWS edge location rather than crossing the internet to a central server. A player in New York gets the site from a New York edge, not from a data centre in Virginia
+- **Automatic Scaling** - CloudFront handles traffic spikes without any manual intervention. Whether 100 or 100,000 players load the site simultaneously, the CDN absorbs the load
+- **DDoS Protection** - built-in protection against distributed denial-of-service attacks via AWS Shield, keeping the platform online even under malicious traffic
+- **HTTPS Everywhere** - all traffic is encrypted with TLS certificates managed automatically by AWS
+- **Cost Efficiency** - because cached content is served from the edge, the backend servers handle far fewer requests, reducing compute costs significantly
+- **Compression** - assets are automatically compressed (gzip/brotli) before delivery, reducing bandwidth usage and speeding up page loads
+
+### Backend Services - Amazon EKS
+
+Amazon EKS (Elastic Kubernetes Service) runs all five backend microservices as containerised applications. Think of it as the engine room - it keeps every service running, scales them up when demand increases, and restarts them if anything goes wrong.
+
+- **Automatic Scaling** - when more players come online (e.g. during a promotion), EKS automatically spins up additional copies of each service to handle the load, and scales back down when traffic drops to save costs
+- **Self-Healing** - if a service crashes or becomes unresponsive, EKS automatically restarts it within seconds. Players may never notice the interruption
+- **Zero-Downtime Deployments** - new code is rolled out gradually (rolling updates), so the platform stays fully operational during deployments. If a bad release is detected, it rolls back automatically
+- **Service Isolation** - each microservice (user, game, wallet, payment, admin) runs independently. A problem in one service doesn't bring down the others
+- **Resource Efficiency** - EKS packs services efficiently across worker nodes, making the most of available compute. Services that need more CPU or memory can be allocated more without affecting others
+- **Infrastructure as Code** - the entire EKS cluster, networking, and scaling rules are defined in Terraform, meaning the infrastructure is version-controlled, repeatable, and auditable
+
+---
+
 ## Tech Stack
 
 | Layer | Technologies |
@@ -331,5 +378,7 @@ All prices are on-demand list pricing for us-east-1 (N. Virginia) with no reserv
 | **Admin Panel** | React 18, Vite, Bootstrap 5, ReactFlow (visual automation builder) |
 | **Backend Services** | Node.js 18+, Express 5, MongoDB (Mongoose), Passport JWT |
 | **Real-time** | Socket.IO (balance updates, chat, notifications), Kafka (event streaming) |
-| **Infrastructure** | AWS EKS, ECR, S3, MSK, ALB, Terraform |
+| **Analytics** | PostHog (product analytics, session replays, feature flags) |
+| **Monitoring** | Sentry (error tracking, performance monitoring, release health) |
+| **Infrastructure** | AWS EKS, CloudFront, ECR, S3, MSK, ALB, Terraform |
 | **AI** | Anthropic Claude API (admin assistant) |
