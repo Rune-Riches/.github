@@ -375,7 +375,7 @@ Amazon EKS (Elastic Kubernetes Service) runs all five backend microservices as c
 | Layer | Technologies |
 |---|---|
 | **Player App** | React 19, Vite, Tailwind CSS, Socket.IO |
-| **Admin Panel** | React 18, Vite, Bootstrap 5, ReactFlow (visual automation builder) |
+| **Admin Panel** | React 19, Vite, Bootstrap 5, ReactFlow (visual automation builder) |
 | **Backend Services** | Node.js 18+, Express 5, MongoDB (Mongoose), Passport JWT |
 | **Real-time** | Socket.IO (balance updates, chat, notifications), Kafka (event streaming) |
 | **Analytics** | PostHog (product analytics, session replays, feature flags) |
