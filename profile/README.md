@@ -1,6 +1,6 @@
 # Rune Riches
 
-Rune Riches is a **social sweepstakes casino platform** built for the US market. Players purchase virtual Gold Coin packages and receive free Sweepstakes Coins as a promotional bonus. They use these coins to play a full catalog of casino-style games - slots, table games, and more. Sweepstakes Coins can be redeemed for real cash prizes, operating under the sweepstakes legal model that makes the platform legal in most US states.
+Rune Riches is a **social sweepstakes casino platform** built for the US market, but can easily be modified to offer **social sweepstakes** to other markets. Players purchase virtual Gold Coin packages and receive free Sweepstakes Coins as a promotional bonus. They use these coins to play a full catalog of casino-style games - slots, table games, and more. Sweepstakes Coins can be redeemed for real cash prizes, operating under the sweepstakes legal model that makes the platform legal in most US states.
 
 ---
 
