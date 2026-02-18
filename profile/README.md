@@ -31,7 +31,8 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 
 - **Register & Sign In** - email/password, Google, or Facebook social login
 - **Browse & Play Games** - full casino game catalog from multiple providers, launched within the platform
-- **Buy Gold Coin Packages** - the Shop offers regular packages, first-purchase specials, and promotional deals
+- **Buy Gold Coin Packages** - the Shop offers regular packages, first-purchase timed offers, and promotional deals
+- **Loot Box Rewards** - targeted loot boxes appear as a falling crate animation, offering free or discounted coin packs to eligible players based on user group, probability, and time window
 - **Track Balances** - real-time Gold Coin and Sweepstakes Coin balances that update instantly
 - **Redeem Winnings** - cash out Sweepstakes Coins for real prizes (subject to identity verification)
 - **Complete KYC** - identity verification via Veriff to unlock redemptions
@@ -46,7 +47,7 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 
 - **Player Management** - search, view, and manage player accounts, balances, KYC status, and transaction history
 - **Game & Provider Management** - enable/disable games and providers, manage the catalog
-- **Shop & Packages** - configure purchase packages, pricing, discounts, and special offers, with AI-powered image generation for package artwork
+- **Shop & Packages** - configure purchase packages (regular, special, first-purchase timed packs, and loot boxes), pricing, discounts, and special offers, with AI-powered image generation for package artwork
 - **Rewards & Bonuses** - create reward definitions with coin amounts, wagering requirements, and restrictions
 - **Promotions & Leaderboards** - run marketing campaigns and competitive events, with AI-generated promotional artwork
 - **Loyalty Program** - configure VIP tiers, benefits, and progression rules
@@ -56,7 +57,7 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 - **1099 Tax Reporting** - SSN-based tax compliance reporting for large prize winners
 - **Content Management** - edit legal pages, FAQs, support articles, and SEO settings
 - **Audit Logs** - full trail of all sensitive admin operations
-- **AI Assistant (Chariot Ally)** - an AI-powered assistant built into the admin panel that can look up player data, pull financial metrics, build reports, and create automation rules through natural conversation
+- **AI Assistant (Chariot Ally)** - an AI-powered assistant built into the admin panel that can look up player data, pull financial metrics, build reports, create automation rules, and manage coin packages (including loot boxes and timed packs) through natural conversation
 
 ---
 
@@ -76,7 +77,7 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 | **user-service** | Player accounts, authentication, profiles, KYC verification, VIP program, real-time chat, and notifications |
 | **game-service** | Game catalog, session management, and Hub88 game provider integration (handles all bet/win/rollback transactions) |
 | **wallet-service** | Coin balances, reward definitions, balance adjustments, and transaction ledger |
-| **payment-service** | Purchase and redemption processing via ApcoPay (cards) and NowPayments (crypto) |
+| **payment-service** | Purchase and redemption processing via ApcoPay (cards) and NowPayments (crypto), plus package management and loot box claim tracking |
 | **admin-service** | Back-office API powering the admin panel - reporting, automation rules, event logs, and the Chariot Ally AI assistant |
 
 ### Infrastructure & Tooling
@@ -161,6 +162,17 @@ Players never directly buy Sweepstakes Coins - they receive them as a free promo
 2. The request is created in payment-service and enters a pending state
 3. An administrator reviews the request in the Redemption Approvals section of the back-office
 4. Once approved, the payout is processed and the coins are deducted from the player's wallet
+
+### Shop Package Types
+
+The platform supports four types of coin packages in the shop:
+
+| Type | Description |
+|---|---|
+| **Regular** | Standard shop packages available to all players (or restricted to specific user groups). Priced in USD, grants Gold Coins and optionally free Sweepstakes Coins. |
+| **Special** | Promotional packages flagged for featured placement in the shop. Same mechanics as regular packages. |
+| **First Purchase (Timed Pack)** | A one-time offer shown only to new players who haven't made their first purchase yet. Includes an expiry countdown (e.g., 2 hours, 1 day, 7 days) from when the player registered. Typically offered at a discount to incentivise conversion. Once the countdown expires or the player purchases, it disappears. |
+| **Loot Box** | A targeted, time-limited package that appears as a falling crate animation on the player's screen. Configurable by user group (only shown to players in specific segments), probability (e.g., 30% of eligible players see it per session), and date window (active between start and end dates). Supports both free claims (instant wallet credit) and paid purchases. Each player can only claim a loot box once, enforced by a unique constraint. |
 
 ---
 
